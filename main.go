@@ -88,12 +88,13 @@ func main() {
 	if err := saveToken(token, tokenDest); err != nil {
 		log.Fatal(err)
 	}
-	
+
 	// Persist the vault accessor to disk
 	if err := saveAccessor(accessor, accessorDest); err != nil {
 		log.Fatal(err)
 	}
 
+	log.Printf("successfully retrived vault token with accessor %s", accessor)
 	log.Printf("successfully stored vault token at %s", tokenDest)
 	log.Printf("successfully stored vault accessor at %s", accessorDest)
 
@@ -165,7 +166,7 @@ func authenticate(role, jwt string) (string, string, error) {
 
 	var s struct {
 		Auth struct {
-			ClientToken string `json:"client_token"`
+			ClientToken    string `json:"client_token"`
 			ClientAccessor string `json:"accessor"`
 		} `json:"auth"`
 	}
@@ -262,3 +263,4 @@ func loadCertFolder(pool *x509.CertPool, p string) error {
 	}
 	return nil
 }
+
