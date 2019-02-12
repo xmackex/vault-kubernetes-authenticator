@@ -62,6 +62,7 @@ func main() {
 	if tokenDest == "" {
 		tokenDest = "/.vault-token"
 	}
+
 	accessorDest := os.Getenv("ACCESSOR_DEST_PATH")
 	if accessorDest == "" {
 		accessorDest = "/.vault-accessor"
